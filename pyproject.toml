@@ -1,0 +1,15 @@
+[project]
+name = "financialcheckagent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fuzzywuzzy>=0.18.0",
+    "langchain-community>=0.4.1",
+    "langgraph>=1.0.3",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.3",
+    "pydantic>=2.12.4",
+    "zai-sdk>=0.0.4.2",
+]

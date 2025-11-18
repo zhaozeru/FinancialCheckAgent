@@ -1,0 +1,63 @@
+version: '1.0'
+row_equivalences:
+  20尺合计: 20重箱SUB-TOTAL
+  40尺合计: 40重箱SUB-TOTAL
+  20GP: 20GP
+  40GP: 40GP
+column_equivalences:
+  MSC: MSC-地中海航运(外代)
+table_references:
+  table1:
+    name: 进口箱量统计表
+    description: 进口业务箱量统计
+  table2:
+    name: 结算船公司统计表
+    description: 结算船公司业务统计
+validation_rules:
+- name: 20尺箱总量验证
+  rule: table2.20尺合计 ≈ table1.20重箱SUB-TOTAL
+  tolerance: 0.05
+- name: 40尺箱总量验证
+  rule: table2.40尺合计 ≈ table1.40重箱SUB-TOTAL
+  tolerance: 0.05
+#update_history:
+#- timestamp: '2025-11-18T09:50:58.749383'
+#  action: auto_added_mappings
+#  added_count: 3
+#  skipped_count: 0
+#  added_mappings:
+#  - from: 20RF+MSC
+#    to: 20RF+YML
+#    type: row
+#    confidence: medium
+#    reason: 表1中20RF+YML=1，表2中20RF+MSC=1，数值相同但船公司不同，可能存在船公司名称映射错误或数据归类差异。
+#    suggestion: 建议核实YML与MSC是否存在业务关联或名称映射关系，确认20RF数据是否应统一归类到MSC。
+#    added_time: '2025-11-18T09:50:58.748384'
+#  - from: 40RF+MSC
+#    to: 40RF+YML
+#    type: row
+#    confidence: high
+#    reason: 表1中40RF+YML=20，表2中40RF+MSC=363（比表1的40RF+MSC=343多20），差异值与YML数据完全一致，极可能是YML数据被错误归类到MSC。
+#    suggestion: 建议将表2中40RF+MSC的20单位数据映射回表1的40RF+YML，或确认YML是否应合并到MSC统计中。
+#    added_time: '2025-11-18T09:50:58.748384'
+#  - from: 翻倒统计
+#    to: 无对应项
+#    type: row
+#    confidence: low
+#    reason: 表2独有的翻倒统计数据（如40RF(倒)、40GP(倒)）在表1中无对应项，可能是表1未统计特殊操作或业务范围不同。
+#    suggestion: 建议明确翻倒箱业务的统计规则，确认是否需要在表1中补充对应数据或作为独立业务处理。
+#    added_time: '2025-11-18T09:50:58.749383'
+#  skipped_mappings: []
+#- timestamp: '2025-11-18T10:39:01.381241'
+#  action: auto_added_mappings
+#  added_count: 1
+#  skipped_count: 2
+#  added_mappings:
+#  - from: 40RF+MSC(差异20)
+#    to: 40RF+YML(20)
+#    type: row
+#    confidence: high
+#    reason: 差异值(20)与表1中YML的40RF数据完全匹配，表明是同一数据的不同归类
+#    suggestion: 将表1的40RF+YML(20)映射到表2的40RF+MSC差异部分，建议统一船公司归类规则
+#    added_time: '2025-11-18T10:39:01.381241'
+#  skipped_mappings: []

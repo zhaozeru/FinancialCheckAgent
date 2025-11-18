@@ -1,0 +1,32 @@
+# Python-generated files
+__pycache__/
+*.py[co]
+*.pyc
+build/
+dist/
+wheels/
+*.egg-info/
+
+# Virtual environments
+.venv
+venv/
+env/
+ENV/
+
+# Environment variables (IMPORTANT!)
+.env
+.env.local
+.env.*.local
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Draw.io diagrams
+流程图.drawio

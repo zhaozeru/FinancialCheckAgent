@@ -1,0 +1,56 @@
+# 聚合规则定义 - 描述如何从基础数据项计算汇总项
+version: "1.0"
+
+row_aggregations:
+  # 表1的行聚合规则
+  "20重箱SUB-TOTAL":
+    table: "table1"
+    type: "sum"
+    components: ["20GP", "20RF", "20DG", "20OH", "20T/S", "20EM(沿海)", "20EM(中转)", "20EM(出口)", "20RE(沿海)", "20RE(中转)", "20RE(出口)"]
+    description: "20尺重箱小计"
+
+  "40重箱SUB-TOTAL":
+    table: "table1"
+    type: "sum"
+    components: ["40GP", "40RF", "40DG", "40OH", "40T/S", "40EM(沿海)", "40EM(中转)", "40EM(出口)", "40RE(沿海)", "40RE(中转)", "40RE(出口)"]
+    description: "40尺重箱小计"
+
+  # 表2的行聚合规则
+  "20尺合计":
+    table: "table2"
+    type: "sum"
+    components: ["20GP", "20OH", "20RF"]
+    description: "20尺箱型合计"
+
+  "40尺合计":
+    table: "table2"
+    type: "sum"
+    components: ["40GP", "40EM", "40RF", "40OH"]
+    description: "40尺箱型合计"
+
+  "统计":
+    table: "table2"
+    type: "sum"
+    components: ["20尺合计", "40尺合计"]
+    description: "总体统计"
+
+  "翻倒统计":
+    table: "table2"
+    type: "sum"
+    components: ["40RF(倒)", "40GP(倒)"]
+    description: "翻倒箱统计"
+
+column_aggregations:
+  # 表1的列聚合规则
+  "进口合计":
+    table: "table1"
+    type: "sum"
+    components: ["MSC", "YML"]
+    description: "进口船公司合计"
+
+  # 表2的列聚合规则
+  "合计":
+    table: "table2"
+    type: "sum"
+    components: ["MSL-民生轮船", "MSC-地中海航运(外代)"]
+    description: "结算船公司合计"
